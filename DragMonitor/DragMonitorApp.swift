@@ -23,7 +23,7 @@ struct DragMonitorApp: App {
 class AppDelegate: NSObject, NSApplicationDelegate {
 
   var dragMonitor: Any?
-  var lastPasteboardChangeCount: Int = 0
+  var lastPasteboardChangeCount: Int = NSPasteboard(name: .drag).changeCount
 
   func applicationDidFinishLaunching(_ notification: Notification) {
     dragMonitor = NSEvent.addGlobalMonitorForEvents(matching: .leftMouseDragged) { _ in
