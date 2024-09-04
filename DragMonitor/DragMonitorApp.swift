@@ -41,16 +41,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let dragTypes = [NSPasteboard.PasteboardType.URL]
     if dragPasteboard.availableType(from: dragTypes) != nil {
       print("💛 dragging")
-      if let items = dragPasteboard.pasteboardItems {
-        items.forEach { item in
-          if let urls = dragPasteboard.readObjects(forClasses: [NSURL.self]) as? [URL] {
-            print("💛", urls.map(\.path))
-          }
-        }
+      if let urls = dragPasteboard.readObjects(forClasses: [NSURL.self]) as? [URL] {
+        print("💛", urls.map(\.path))
       }
-
-
     }
-
   }
 }
